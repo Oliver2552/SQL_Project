@@ -6,23 +6,47 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 SQL Queries:
 
+```
+SELECT
+	cals.country,
+	cals.city,
+	SUM(sbs.total_ordered * ca.cleaned_unit_price) AS total_transaction_revenue
+FROM
+	sales_by_sku AS sbs
+JOIN
+	cleaned_all_sessions AS cals USING(productsku)
+JOIN
+	cleaned_analytics AS ca USING(visitid)
+GROUP BY
+	country, city
+ORDER BY
+	total_transaction_revenue DESC
+LIMIT 10;
+```
 
-
-Answer:
-
-
+Answer: the top 10 countries are United states with respective cities, except for 8th place which is the UK. The number one transaction revenue was $13,469,795.
 
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
 
 SQL Queries:
-
-
+```
+SELECT
+	cals.country,
+	cals.city,
+	ROUND(AVG(sbs.total_ordered),2) AS avg_products_ordered
+FROM
+	cleaned_all_sessions AS cals
+JOIN
+	sales_by_sku AS sbs USING(productsku)
+GROUP BY
+	country, city
+ORDER BY
+	country ASC;
+```
 
 Answer:
-
-
 
 
 
@@ -31,11 +55,25 @@ Answer:
 
 SQL Queries:
 
+```
+SELECT
+    cals.country,
+    cals.city,
+    cals.cleaned_v2productcategory,
+    COUNT(*) AS category_count
+FROM
+    cleaned_all_sessions AS cals
+GROUP BY
+    cals.country, 
+	cals.city, 
+	cals.cleaned_v2productcategory
+ORDER BY
+    category_count DESC
+LIMIT 10;
+```
 
 
 Answer:
-
-
 
 
 
@@ -44,11 +82,36 @@ Answer:
 
 SQL Queries:
 
+```
+WITH ranked_products AS (
+    SELECT
+        cals.country,
+        cals.city,
+        cals.cleaned_v2productcategory AS product_category,
+        cals.productsku,
+        sbs.total_ordered,
+        ROW_NUMBER() OVER(PARTITION BY cals.country, cals.city ORDER BY sbs.total_ordered DESC) AS rank
+    FROM
+        cleaned_all_sessions AS cals
+    JOIN
+        sales_by_sku AS sbs USING(productsku)
+)
 
+SELECT
+    country,
+    city,
+    product_category,
+    productsku AS top_product,
+    total_ordered
+FROM
+    ranked_products
+WHERE
+    rank = 1
+ORDER BY
+    country, city;
+```
 
 Answer:
-
-
 
 
 
@@ -56,12 +119,42 @@ Answer:
 
 SQL Queries:
 
-
+```
+SELECT
+    cals.country,
+    cals.city,
+    SUM(analytics.revenue) AS total_revenue
+FROM
+    cleaned_all_sessions AS cals
+JOIN
+    analytics
+ON
+    cals.fullvisitorid = analytics.fullvisitorid
+GROUP BY
+    cals.country, cals.city
+ORDER BY
+    total_revenue DESC; 
+```
+```
+SELECT
+    SUM(ca.cleaned_unit_price * sbs.total_ordered) AS total_revenue
+FROM
+    cleaned_all_sessions AS cals
+JOIN
+	sales_by_sku AS sbs USING(productsku)
+JOIN
+    cleaned_analytics AS ca USING(visitid)
+ORDER BY
+    total_revenue DESC;
+```
 
 Answer:
 
+THe first query shows all the revenue broken down by country and city, while the second query sums up all the revenues to show a total revenue of ~$50m. 
 
+In terms of impact, we can see from the first query than the first 5 rows, ordered in descending order show that just over half of the total revenue comes from the United States, more specifically ~$26m.
 
+This would pit the United States as a huge and imporant marketshare for this website.
 
 
 
