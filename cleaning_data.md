@@ -52,6 +52,7 @@ Much like the analytics table, the all_sessions table will be cleaned as well, u
   - "productprice" needs to be divided by 1,000,000
   - "productvariant" has 15,094 instances of "(not set)" - will be dropped
   - "time" column needs to be converted
+  - "country" has 24 columns as "(not set)" so we'll filter those out for the view
   - "city" column needs to be handled for missing entries 'Not available in demo 
   dataset' - will replace those values with their respective countries.
   - "ecommerceaction_option" has 15,103 / 15,134 rows as NULL -- will be dropped
@@ -76,18 +77,13 @@ SELECT
     channelgrouping,
     (time || ' seconds')::interval AS time_formatted,
     country,
-    productsku,
+	productsku,
     CASE 
         WHEN city = '(not set)' OR city = 'not available in demo dataset' THEN country
         ELSE city
     END AS cleaned_city,
     v2productname,
-    CASE 
-        WHEN v2productcategory IS NOT NULL THEN 
-            REVERSE(SUBSTRING(REVERSE(v2productcategory), POSITION('/' IN 
-            REVERSE(v2productcategory)) + 1))
-        ELSE NULL
-    END AS cleaned_v2productcategory,
+   	v2productcategory,
     CASE 
         WHEN productprice IS NOT NULL THEN productprice / 1000000
         ELSE NULL
@@ -101,4 +97,6 @@ SELECT
     type
 FROM 
 	all_sessions;
+WHERE
+	city != '(not set)';
 ```
