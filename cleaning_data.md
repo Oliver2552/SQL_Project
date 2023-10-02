@@ -31,7 +31,7 @@ CREATE VIEW cleaned_analytics AS
 SELECT
     visitnumber,
     visitid,
-   	visitstarttime,
+    visitstarttime,
     date,
     fullvisitorid,
     channelgrouping,
