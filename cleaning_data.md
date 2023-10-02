@@ -74,13 +74,12 @@ CREATE VIEW cleaned_all_sessions AS
 SELECT
     fullvisitorid,
     channelgrouping,
-    time,
+    (time || ' seconds')::interval AS time_formatted,
     country,
 	productsku,
-    city,
     CASE 
-        WHEN "city" IS NULL OR "city" = '(not set)' THEN "country"
-        ELSE "city"
+        WHEN city = '(not set)' OR city = 'not available in demo dataset' THEN country
+        ELSE city
     END AS cleaned_city,
     v2productname,
     CASE 
@@ -94,7 +93,7 @@ SELECT
     END AS cleaned_productprice,
     currencycode,
     itemquantity,
-    timeonsite,
+    (timeonsite || ' Seconds')::interval AS timeonsite_formatted,
     pageviews,
     date,
     visitid,
