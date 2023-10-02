@@ -1,8 +1,20 @@
-# Issues To Fix With Cleaning
+# What To Fix!
 
 ## 'analytics' table:
 
-As touched on in QA.md, most of the issues we face exist on the 'analytics' and 'all_sessions' tables where for 'analytics', we will be creating a view, and will be answersing questions based on. The fixes that will take place will be:
+Our largest table, containing 4,301,122 rows, as evidenced with the below query:
+
+```
+SELECT
+	*
+FROM
+	analytics;
+```
+This one proved to be quite messy - present were several columns containing most, if not all, NULL values, two time colums, 'visitstarttime' and 'timeonsite' were in formats that appeared to be seconds so they will require transformation and column 'unit_price' needed to be divided by 1,000,000 to attain its true price values. The below does a unique and NULL count for all columns.
+
+In regards to identifying the primary key, initially it was between the 'visitid' and 'fullvisitorid' however, upon further examination and with results of the below query, visitid seems like the only reasonable id as each visit to the site is represented by its own id where each visitor will retain their id, no matter how many times they return.
+
+The issues we will be fixing will addressed through creating a view, and will be answersing questions based on. The fixes that will take place will be:
 
   - 'visitstarttime' will be converted from seconds to a timestamp (HH-MM-SS)
   - 'unit_price' needs to be divided by 1,000,000 to get true value
