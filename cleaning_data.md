@@ -31,7 +31,7 @@ CREATE VIEW cleaned_analytics AS
 SELECT
     visitnumber,
     visitid,
-   	TO_TIMESTAMP(visitstarttime::bigint) AS visit_time,
+    TO_TIMESTAMP(visitstarttime::bigint) AS visit_time,
     date,
     fullvisitorid,
     channelgrouping,
@@ -76,7 +76,7 @@ SELECT
     channelgrouping,
     (time || ' seconds')::interval AS time_formatted,
     country,
-	productsku,
+    productsku,
     CASE 
         WHEN city = '(not set)' OR city = 'not available in demo dataset' THEN country
         ELSE city
@@ -84,7 +84,8 @@ SELECT
     v2productname,
     CASE 
         WHEN v2productcategory IS NOT NULL THEN 
-            REVERSE(SUBSTRING(REVERSE(v2productcategory), POSITION('/' IN REVERSE(v2productcategory)) + 1))
+            REVERSE(SUBSTRING(REVERSE(v2productcategory), POSITION('/' IN 
+            REVERSE(v2productcategory)) + 1))
         ELSE NULL
     END AS cleaned_v2productcategory,
     CASE 
