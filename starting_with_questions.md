@@ -34,22 +34,22 @@ Answer: the top 10 countries are United states with respective cities, except fo
 SQL Queries:
 ```
 SELECT
-    cals.country,
-    cals.cleaned_city,
-    ROUND(AVG(sbs.total_ordered),2) AS avgNumOfProducts_ordered
+	cals.country,
+	cals.cleaned_city,
+	ROUND(AVG(sbs.total_ordered),2) AS avg_products_ordered
 FROM
-    cleaned_all_sessions AS cals
+	cleaned_all_sessions AS cals
 JOIN
-    sales_by_sku AS sbs USING(productsku)
+	sales_by_sku AS sbs USING(productsku)
 GROUP BY
-    country,
-    cleaned_city
+	country, cleaned_city
 ORDER BY
-    country ASC;
+	avg_products_ordered desc;
 ```
 
 Answer:
 
+The highest avg number of products ordered are from Czech Republic and Saudi Arabia with 319 products ordered and in third place is the United States with ~250.
 
 
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
