@@ -1,18 +1,37 @@
-Question 1: What is the average time spent on the site by country?
+Question 1: What are the top 10 countries when it comes to average time spent on the site? Rank them in order of most time spend to least.
+
 
 SQL Queries: 
 ```
 SELECT
     country,
-    AVG(timeonsite_formatted) AS timeonsite
+    AVG(timeonsite_formatted) AS avg_timeonsite,
+    RANK() OVER (ORDER BY AVG(timeonsite_formatted) DESC) AS rank_by
 FROM
-	cleaned_all_sessions
+    cleaned_all_sessions
 GROUP BY
-	country;
+    country
+HAVING
+    AVG(timeonsite_formatted) IS NOT NULL
+ORDER BY
+    avg_timeonsite DESC
+LIMIT 10;
+	
 ```
 Answer: 
 
-with 129 rows it would take too long to list them but with the highest average time, visitors from Peru spend 13 minutes and 39 seconds and at the lowest average, visitors from Brunei spend about 3 seconds!
+The top 10 countries with the highest average time spent on the site, ranked from most to least, are:
+
+Peru: 13 minutes and 39 seconds
+Nigeria: 12 minutes and 32 seconds
+Tunisia: 12 minutes and 6 seconds
+Slovenia: 11 minutes and 36 seconds
+Kenya: 9 minutes and 32 seconds
+El Salvador: 9 minutes and 28 seconds
+Jersey: 8 minutes and 38 seconds
+Morocco: 7 minutes and 37 seconds
+Guatemala: 7 minutes and 24 seconds
+Belarus: 7 minutes and 21 seconds."
 
 
 Question 2: What are the top 5 most *ordered* products? include the productsku and name.
