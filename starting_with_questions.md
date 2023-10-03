@@ -8,19 +8,20 @@ SQL Queries:
 
 ```
 SELECT
-	cals.country,
-	cals.cleaned_city,
-	SUM(sbs.total_ordered * ca.cleaned_unit_price) AS total_transaction_revenue
+    cals.country,
+    cals.cleaned_city,
+    SUM(sbs.total_ordered * ca.cleaned_unit_price) AS total_transaction_revenue
 FROM
-	sales_by_sku AS sbs
+    sales_by_sku AS sbs
 JOIN
-	cleaned_all_sessions AS cals USING(productsku)
+    cleaned_all_sessions AS cals USING(productsku)
 JOIN
-	cleaned_analytics AS ca USING(visitid)
+    cleaned_analytics AS ca USING(visitid)
 GROUP BY
-	country, cleaned_city
+    country,
+    cleaned_city
 ORDER BY
-	total_transaction_revenue DESC
+    total_transaction_revenue DESC
 LIMIT 10;
 ```
 
@@ -33,17 +34,18 @@ Answer: the top 10 countries are United states with respective cities, except fo
 SQL Queries:
 ```
 SELECT
-	cals.country,
-	cals.cleaned_city,
-	ROUND(AVG(sbs.total_ordered),2) AS avgNumOfProducts_ordered
+    cals.country,
+    cals.cleaned_city,
+    ROUND(AVG(sbs.total_ordered),2) AS avgNumOfProducts_ordered
 FROM
-	cleaned_all_sessions AS cals
+    cleaned_all_sessions AS cals
 JOIN
-	sales_by_sku AS sbs USING(productsku)
+    sales_by_sku AS sbs USING(productsku)
 GROUP BY
-	country, cleaned_city
+    country,
+    cleaned_city
 ORDER BY
-	country ASC;
+    country ASC;
 ```
 
 Answer:
@@ -65,8 +67,8 @@ FROM
     cleaned_all_sessions AS cals
 GROUP BY
     cals.country, 
-	cals.cleaned_city, 
-	cals.2productcategory
+    cals.cleaned_city, 
+    cals.2productcategory
 ORDER BY
     category_count DESC
 LIMIT 10;
@@ -90,7 +92,7 @@ WITH ranked_products AS (
         cals.v2productcategory,
         cals.productsku,
         sbs.total_ordered,
-        ROW_NUMBER() OVER(PARTITION BY cals.country, cals.city ORDER BY sbs.total_ordered DESC) AS rank
+        ROW_NUMBER() OVER(PARTITION BY cals.country, cals.city ORDER BY 		sbs.total_ordered DESC) AS rank
     FROM
         cleaned_all_sessions AS cals
     JOIN
@@ -108,7 +110,8 @@ FROM
 WHERE
     rank = 1
 ORDER BY
-    country, cleaned_city;
+    country,
+    cleaned_city;
 ```
 
 Answer:
@@ -142,12 +145,12 @@ SELECT
 FROM
     cleaned_all_sessions AS cals
 JOIN
-	sales_by_sku AS sbs USING(productsku)
+    sales_by_sku AS sbs USING(productsku)
 JOIN
     cleaned_analytics AS ca USING(visitid)
 GROUP BY
-	cals.country,
-	cals.cleaned_city
+    cals.country,
+    cals.cleaned_city
 ORDER BY
     total_revenue DESC
 LIMIT 5;
