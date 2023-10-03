@@ -54,7 +54,7 @@ Much like the analytics table, the all_sessions table will be cleaned as well, u
   - "time" column needs to be converted
   - "country" has 24 columns as "(not set)" so we'll filter those out for the view
   - "city" column needs to be handled for missing entries 'Not available in demo 
-  dataset' - will replace those values with their respective countries.
+  dataset' and '(not set)' - will replace those values with their respective countries.
   - "ecommerceaction_option" has 15,103 / 15,134 rows as NULL -- will be dropped
   - "transactionid" has 15,125 / 15,134 rows as NULL - will be dropped  
   - "transactionrevenue" has 15,130 rows as NULL - will be dropped
@@ -67,6 +67,8 @@ Much like the analytics table, the all_sessions table will be cleaned as well, u
   - "searchkeyword" has 15,134 / 15,134 (ALL) rows as NULL - will be dropped
   - "transactions" has 15,053 / 15,134 rows as NULL - will be dropped
   - "productrefundamount" has 15,134 / 15,135 rows as NULL - will be dropped
+  - v2productcategory is currently in a format like XXXX/XXXX/productname - while you could seperate the entire string by the '/' into seperate columns,
+    we felt it would be A) give better insight as to the type of product and, B) too complicated as some rows have 2 '/' while others have 4 '/'.
 
 We can achieve the above by creating the following view:
 
@@ -98,5 +100,5 @@ SELECT
 FROM 
 	all_sessions;
 WHERE
-	city != '(not set)';
+	country != '(not set)';
 ```
