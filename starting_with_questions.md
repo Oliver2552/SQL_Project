@@ -35,7 +35,7 @@ SQL Queries:
 SELECT
 	cals.country,
 	cals.cleaned_city,
-	ROUND(AVG(sbs.total_ordered),2) AS avg_products_ordered
+	ROUND(AVG(sbs.total_ordered),2) AS avgNumOfProducts_ordered
 FROM
 	cleaned_all_sessions AS cals
 JOIN
