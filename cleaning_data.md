@@ -51,10 +51,10 @@ Much like the analytics table, the all_sessions table will be cleaned as well, u
 
   - "productprice" needs to be divided by 1,000,000
   - "productvariant" has 15,094 instances of "(not set)" - will be dropped
-  - "time" column needs to be converted
+  - "time" column needs to be converted from seconds to HH:MM:SS
   - "country" has 24 columns as "(not set)" so we'll filter those out for the view
-  - "city" column needs to be handled for missing entries 'Not available in demo 
-  dataset' and '(not set)' - will replace those values with their respective countries.
+  - "city" column needs to be handled for missing entries like: 'Not available in demo 
+    dataset' and '(not set)' - will replace those values with their respective countries.
   - "ecommerceaction_option" has 15,103 / 15,134 rows as NULL -- will be dropped
   - "transactionid" has 15,125 / 15,134 rows as NULL - will be dropped  
   - "transactionrevenue" has 15,130 rows as NULL - will be dropped
