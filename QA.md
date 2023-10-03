@@ -340,7 +340,7 @@ FROM
     analytics;
 ```
 
-We also, did a search any outliers in the 'unit_price' column and we found now values below 0 and our highest value was 995 which seems reasonable, using the query below:
+We also, did a search any outliers in the 'unit_price' column and we found no values below 0 and our highest value was 995 which seems reasonable, using the query below:
 
 ```
 SELECT
