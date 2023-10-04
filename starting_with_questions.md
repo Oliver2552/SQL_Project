@@ -161,11 +161,11 @@ LIMIT 5;
 
 Answer:
 
-THe first query shows all the revenue broken down by country and city, while the second query sums up all the revenues to show a total revenue of ~$50m. 
+The first query shows all the revenue broken down by country and city, while the second query sums up all the revenues to show a total revenue of ~$50m. 
 
-In terms of impact, we can see from the first query than the first 5 rows, ordered in descending order show that just over half of the total revenue comes from the United States, more specifically ~$26m.
+In terms of impact, we can see from the first query that the first 5 rows, ordered in descending order show that just over half of the total revenue comes from the United States, more specifically ~$26m.
 
-This would pit the United States as a huge and important marketshare for this website.
+This would make the United States as a huge and important marketshare for this website.
 
 
 
