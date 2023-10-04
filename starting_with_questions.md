@@ -7,8 +7,8 @@ Answer the following questions and provide the SQL queries used to find the answ
 SQL Queries:
 
 ```
-SELECT
-    cals.country,
+SELECT -- selecting country, cleaned_city and summing the product of total orders and unit_price 
+    cals.country, 
     cals.cleaned_city,
     SUM(sbs.total_ordered * ca.cleaned_unit_price) AS total_transaction_revenue
 FROM
@@ -22,7 +22,7 @@ GROUP BY
     cleaned_city
 ORDER BY
     total_transaction_revenue DESC
-LIMIT 10;
+LIMIT 10; - only want the top 10 countries and city's
 ```
 
 Answer: the top 10 countries are United states with respective cities, except for 8th place which is the UK. The number one transaction revenue was $13,469,795. 
