@@ -60,22 +60,23 @@ SQL Queries:
 ```
 SELECT
     cals.country,
-    cals.cleaned)city,
+	cals.cleaned_city,
     cals.v2productcategory,
     COUNT(*) AS category_count
 FROM
     cleaned_all_sessions AS cals
 GROUP BY
-    cals.country, 
-    cals.cleaned_city, 
-    cals.2productcategory
+    cals.country,
+	cals.cleaned_city,
+    cals.v2productcategory
 ORDER BY
-    category_count DESC
-LIMIT 10;
+    category_count DESC;
 ```
 
 
 Answer:
+
+Products' 'youtube' and 'mens t-shirts' are predominantly bought by US customers... 613 and 435, respectively.
 
 
 
@@ -116,6 +117,7 @@ ORDER BY
 
 Answer:
 
+too many country and city combination to give a single answer, the resultant table gives 356 rows.
 
 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
