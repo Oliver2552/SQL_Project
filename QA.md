@@ -349,6 +349,90 @@ SELECT
 FROM
     analytics;
 ```
+After performing the cleaning as in 'cleaning_data.md', we performed the same union table as above but with the changes and is seen below:
+```
+SELECT
+    'visitnumber' AS column_name, 
+    COUNT(DISTINCT visitnumber) AS unique_values,
+	COUNT(CASE WHEN visitnumber IS NULL THEN 1 ELSE NULL END) AS null_values
+FROM
+    cleaned_analytics 
+	
+UNION ALL
+
+SELECT
+    'visitid' AS column_name,
+    COUNT(DISTINCT visitid) AS unique_values,
+	COUNT(CASE WHEN visitid IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics 
+	
+UNION ALL
+
+SELECT
+    'visit_time' AS column_name,
+    COUNT(DISTINCT visit_time) AS unique_values,
+	COUNT(CASE WHEN visit_time IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics 
+
+UNION ALL
+
+SELECT
+    'date' AS column_name,
+    COUNT(DISTINCT date) AS unique_values,
+	COUNT(CASE WHEN date IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics
+
+UNION ALL
+
+SELECT
+    'fullvisitorid' AS column_name,
+    COUNT(DISTINCT fullvisitorid) AS unique_values,
+	COUNT(CASE WHEN fullvisitorid IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics
+
+UNION ALL
+
+SELECT
+    'channelgrouping' AS column_name,
+    COUNT(DISTINCT channelgrouping) AS unique_values,
+	COUNT(CASE WHEN channelgrouping IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics
+
+UNION ALL
+
+SELECT
+    'socialengagementtype' AS column_name,
+    COUNT(DISTINCT socialengagementtype) AS unique_values,
+	COUNT(CASE WHEN socialengagementtype IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics
+
+UNION ALL
+
+SELECT
+    'pageviews' AS column_name,
+    COUNT(DISTINCT pageviews) AS unique_values,
+	COUNT(CASE WHEN pageviews IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics
+
+UNION ALL
+
+SELECT
+    'timeonsite_clean' AS column_name,
+    COUNT(DISTINCT timeonsite_clean) AS unique_values,
+	COUNT(CASE WHEN timeonsite_clean IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_analytics
+```
+It should be noted that 'timeonsite' does still present with ~477k NULL rows and while it is a lot, there are 4.3m rows in total. We considered replacing them with another value but wasnt sure what to replace them with.. That is something that deserves more attention with more data - with more information, the question, why are they blank needs answering.
+
+
 
 ### 'all_sessions' table:
 
@@ -655,5 +739,133 @@ SELECT
     COUNT(CASE WHEN ecommerceaction_option IS NULL THEN 1 ELSE NULL END)
 FROM
     all_sessions;
+
+Post cleaning of the all_sessions dataset we also did a union table check of all uniques and null values too make sure our changes in the cleaning_data.md took effect and they did. That being said, like in all_sessions, we left timeonsite_formatted in despite its presence of NULL values ~3,0000 of a total of ~15,000 rows. We didnt know what to replace them with as its unclear why theyre null in the first place. Below is the check:
+
+```
+SELECT
+    'fullvisitorid' AS column_name, 
+    COUNT(DISTINCT fullvisitorid) AS unique_values,
+	COUNT(CASE WHEN fullvisitorid IS NULL THEN 1 ELSE NULL END) AS null_values
+FROM
+    cleaned_all_sessions 
+	
+UNION ALL
+
+SELECT
+    'channelgrouping' AS column_name,
+    COUNT(DISTINCT channelgrouping) AS unique_values,
+	COUNT(CASE WHEN channelgrouping IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions 
+	
+UNION ALL
+
+SELECT
+    'time_formatted' AS column_name,
+    COUNT(DISTINCT time_formatted) AS unique_values,
+	COUNT(CASE WHEN time_formatted IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'country' AS column_name,
+    COUNT(DISTINCT country) AS unique_values,
+	COUNT(CASE WHEN country IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'productsku' AS column_name,
+    COUNT(DISTINCT productsku) AS unique_values,
+	COUNT(CASE WHEN productsku IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'cleaned_city' AS column_name,
+    COUNT(DISTINCT cleaned_city) AS unique_values,
+	COUNT(CASE WHEN cleaned_city IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'v2productname' AS column_name,
+    COUNT(DISTINCT v2productname) AS unique_values,
+	COUNT(CASE WHEN v2productname IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'v2productcategory' AS column_name,
+    COUNT(DISTINCT v2productcategory) AS unique_values,
+	COUNT(CASE WHEN v2productcategory IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+	
+SELECT
+    'cleaned_productprice' AS column_name,
+    COUNT(DISTINCT cleaned_productprice) AS unique_values,
+	COUNT(CASE WHEN cleaned_productprice IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'currencycode' AS column_name,
+    COUNT(DISTINCT currencycode) AS unique_values,
+	COUNT(CASE WHEN currencycode IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'timeonsite_formatted' AS column_name,
+    COUNT(DISTINCT timeonsite_formatted) AS unique_values,
+	COUNT(CASE WHEN timeonsite_formatted IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'pageviews' AS column_name,
+    COUNT(DISTINCT pageviews) AS unique_values,
+	COUNT(CASE WHEN pageviews IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'date' AS column_name,
+    COUNT(DISTINCT date) AS unique_values,
+	COUNT(CASE WHEN date IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions
+
+UNION ALL
+
+SELECT
+    'visitid' AS column_name,
+    COUNT(DISTINCT visitid) AS unique_values,
+	COUNT(CASE WHEN visitid IS NULL THEN 1 ELSE NULL END)
+FROM
+    cleaned_all_sessions;
+```
 
 
