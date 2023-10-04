@@ -25,7 +25,9 @@ ORDER BY
 LIMIT 10;
 ```
 
-Answer: the top 10 countries are United states with respective cities, except for 8th place which is the UK. The number one transaction revenue was $13,469,795.
+Answer: the top 10 countries are United states with respective cities, except for 8th place which is the UK. The number one transaction revenue was $13,469,795. 
+
+NOTE: we used 'cleaned_unit_price' rather than 'cleaned_productprice' as the revenue figures are higher with cleaned_unit_price - logically it would seem that productprice is appropriate as customers buy 'products' rather than 'units' - but in this case, why would the website lose money on sold products..
 
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
