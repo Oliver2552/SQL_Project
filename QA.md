@@ -99,9 +99,9 @@ With only 2 columns - 'productsku' and 'total_orderd', our only main concern was
 
 ```
 SELECT
-	*
+    *
 FROM
-	sales_by_sku;
+    sales_by_sku;
 ```
 
 that the 'productsku' column was unique and much like with 'sales_report', we checked for that with the following query:
