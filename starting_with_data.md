@@ -22,7 +22,7 @@ Answer:
 
 The top 10 countries with the highest average time spent on the site, ranked from most to least, are:
 
-Peru: 13 minutes and 39 seconds
+Peru: 14 minutes and 19 seconds
 Nigeria: 12 minutes and 32 seconds
 Tunisia: 12 minutes and 6 seconds
 Slovenia: 11 minutes and 36 seconds
@@ -31,7 +31,9 @@ El Salvador: 9 minutes and 28 seconds
 Jersey: 8 minutes and 38 seconds
 Morocco: 7 minutes and 37 seconds
 Guatemala: 7 minutes and 24 seconds
-Belarus: 7 minutes and 21 seconds."
+Belarus: 7 minutes and 21 seconds.
+
+The United States sits at 53rd with an average of 3 minutes and 37 seconds, does this inform about the US spending habits? Also, why is it that Peru, who spends the most time, fail to convert to buyers - would need more data to understand why.. (eg. interenet connectivity, cursor heatmap etc...)
 
 
 Question 2: What are the top 5 most *ordered* products? include the productsku and name.
