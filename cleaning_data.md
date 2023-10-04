@@ -18,7 +18,7 @@ The issues we will be fixing will addressed through creating a view, and will be
 
   - 'visitstarttime' will be converted from seconds to a timestamp (YYYY-MM-DD HH-MM-SS)
   - 'unit_price' needs to be divided by 1,000,000 to get true value
-  - 'evenue' column has 4,285,767 / 4,301,122 rows as NULL - will be dropped
+  - 'revenue' column has 4,285,767 / 4,301,122 rows as NULL - will be dropped
   - 'bounces' column has 3,826,283 / 4,301,122 rows as NULl - will be dropped
   - units_sold column has 4,205,975 / 4,301,122 rows as NULL - will be dropped
   - userid column has 4,301,122 / 4,301,122 (ALL) rows as NULL - will be dropped
