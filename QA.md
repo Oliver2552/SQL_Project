@@ -739,6 +739,7 @@ SELECT
     COUNT(CASE WHEN ecommerceaction_option IS NULL THEN 1 ELSE NULL END)
 FROM
     all_sessions;
+```
 
 Post cleaning of the all_sessions dataset we also did a union table check of all uniques and null values too make sure our changes in the cleaning_data.md took effect and they did. That being said, like in all_sessions, we left timeonsite_formatted in despite its presence of NULL values ~3,0000 of a total of ~15,000 rows. We didnt know what to replace them with as its unclear why theyre null in the first place. Below is the check:
 
