@@ -1,4 +1,4 @@
-# Final-Project-Transforming-and-Analyzing-Data-with-SQL
+# SQL-Based Data Transformation and Analysis for E-commerce Insights
 
 ## Project/Goals
 The aim of this project was to transform and analyse the 5 datasets recieved (sales_order, sales_by_sku, products, analytics, all_sessions), using SQL.
