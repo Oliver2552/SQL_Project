@@ -30,6 +30,6 @@ Challenges facing this project was the lack of context behind the data and colum
 Another challenge was time - when presented with lots of data, it's important to really sit, soak in and digest the information so as to properly undestand the information and we were time limited.
 
 ## Future Goals
-If given more time, the data could be better understood and there could be a more comprehensive cleaning process.
+The data could be better understood and there could be a more comprehensive cleaning process.
 
-In addition, with more time, advanced analytics techniques could be incorporated to gain more insight out of the data.
+In addition, more advanced analytics techniques could be incorporated to gain more insight out of the data.
