@@ -7,7 +7,7 @@ Across the datasets, was information related to product details including sales 
 
 ## Process
 ### Step 1 - Creating Tables and Importing the Data
-Here we created SQL queries to create tables for each dataset, wherein column names were specified and datatypes too.
+Here we created SQL queries to create tables for each dataset and ultimately the database, wherein column names were specified and datatypes too.
 
 ## Step 2 - Data Cleaning and Transformation
 Here, I examined the data to look for any NULL values, missing or incorrect entries, outliers and ensuring that columns chosen as primary keys were truly unique. The QA process helped to inform on what needed to be cleaned/transformed.
