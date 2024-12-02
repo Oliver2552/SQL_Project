@@ -25,7 +25,7 @@ Results helped discover finding such as:
 - Differences in the impact of revenue depending on the country where, some countries play a critical role in revenue generation for the website
 
 ## Challenges 
-Challenges facing this project was the lack of context behind the data and columns' values - in a real world setting/professiona work environment, dealing with missing entries, NULL values or outliers etc.. may be handled differently where you would reach out to relevant stakeholders/domain experts to verify the information, for example, what may seem like an outlier worth removing could actually be viable data.
+Challenges facing this project was the lack of context behind the data and columns' values - in a real world setting dealing with missing entries, NULL values or outliers etc.. may be handled differently where you would reach out to relevant stakeholders/domain experts to verify the information, for example, what may seem like an outlier worth removing could actually be viable data.
 
 Another challenge was time - when presented with lots of data, it's important to really sit, soak in and digest the information so as to properly undestand the information and we were time limited.
 
